@@ -1,0 +1,17 @@
+.card{
+  /* color: aliceblue;
+   width: 150px;
+  height: 50px;
+  background-color: rgba(57, 134, 228, 0);
+  /* centrar vertical y horizontalmente  */
+  position: relative;
+  top: 50%;
+  left: 30%;
+}
+.card-body{
+}
+.btn{
+  margin: 5px;
+  background-color: #ae1e29;
+  border:#ae1e29;
+}
