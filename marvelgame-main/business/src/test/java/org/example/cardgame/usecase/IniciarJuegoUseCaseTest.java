@@ -19,7 +19,7 @@ import reactor.test.StepVerifier;
 import static org.mockito.Mockito.when;
 
 
-//TODO: hacer prueba
+
 @ExtendWith(MockitoExtension.class)
 class IniciarJuegoUseCaseTest {
     @InjectMocks
@@ -37,7 +37,6 @@ class IniciarJuegoUseCaseTest {
         when(repository.obtenerEventosPor("Juego01"))
                 .thenReturn(juegoCreado());
 
-        //ACT & ASSERT
         StepVerifier
                 .create(useCase.apply(Mono.just(command)))
                 .expectNextMatches(domainEvent -> {

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IsLoggedInGuard } from '../auth/is-logged-in.guard';
 import { CreateNewgameComponent } from './create-newgame/create-newgame.component';
 import { GameHomeComponent } from './game-home/game-home.component';
+import { GameListComponent } from './game-list/game-list.component';
+import { TableGameComponent } from './table-game/table-game.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,16 @@ const routes: Routes = [
   {
     path: 'newgame',
     component: CreateNewgameComponent,
+    //canActivate:[IsLoggedInGuard]
+  },
+  {
+    path: 'games',
+    component: GameListComponent,
+    //canActivate:[IsLoggedInGuard]
+  },
+  {
+    path: 'games/board',
+    component: TableGameComponent,
     //canActivate:[IsLoggedInGuard]
   },
   /* {
