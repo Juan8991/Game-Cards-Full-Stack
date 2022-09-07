@@ -1,12 +1,11 @@
 package org.example.cardgame.usecase;
 
 
-import org.example.cargame.command.CrearJuegoCommand;
-import org.example.cargame.events.JuegoCreado;
-import org.example.cargame.events.JugadorAgregado;
-import org.example.cargame.gateway.ListaDeCartaService;
-import org.example.cargame.gateway.model.CartaMaestra;
-import org.example.cargame.usecase.CrearJuegoUseCase;
+import org.example.cardgame.command.CrearJuegoCommand;
+import org.example.cardgame.events.JuegoCreado;
+import org.example.cardgame.events.JugadorAgregado;
+import org.example.cardgame.gateway.ListaDeCartaService;
+import org.example.cardgame.gateway.model.CartaMaestra;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 

@@ -1,12 +1,11 @@
 package org.example.cardgame.usecase;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import org.example.cargame.command.IniciarJuegoCommand;
-import org.example.cargame.events.JuegoCreado;
-import org.example.cargame.events.TableroCreado;
-import org.example.cargame.gateway.JuegoDomainEventRepository;
-import org.example.cargame.usecase.IniciarJuegoUseCase;
-import org.example.cargame.values.JugadorId;
+import org.example.cardgame.command.IniciarJuegoCommand;
+import org.example.cardgame.events.JuegoCreado;
+import org.example.cardgame.events.TableroCreado;
+import org.example.cardgame.gateway.JuegoDomainEventRepository;
+import org.example.cardgame.values.JugadorId;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

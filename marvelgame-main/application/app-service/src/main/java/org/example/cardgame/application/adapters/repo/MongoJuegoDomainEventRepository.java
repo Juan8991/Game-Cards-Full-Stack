@@ -2,7 +2,7 @@ package org.example.cardgame.application.adapters.repo;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.cardgame.application.generic.EventStoreRepository;
-import org.example.cargame.gateway.JuegoDomainEventRepository;
+import org.example.cardgame.gateway.JuegoDomainEventRepository;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 

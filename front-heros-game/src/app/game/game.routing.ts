@@ -23,7 +23,7 @@ const routes: Routes = [
     //canActivate:[IsLoggedInGuard]
   },
   {
-    path: 'games/board',
+    path: 'board',
     component: TableGameComponent,
     //canActivate:[IsLoggedInGuard]
   },

@@ -2,14 +2,13 @@ package org.example.cardgame.application.handle;
 
 
 
-import org.example.cargame.command.CrearJuegoCommand;
-import org.example.cargame.usecase.CrearJuegoUseCase;
+import org.example.cardgame.command.CrearJuegoCommand;
+import org.example.cardgame.usecase.CrearJuegoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Mono;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
