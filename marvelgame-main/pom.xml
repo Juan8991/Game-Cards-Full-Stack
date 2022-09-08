@@ -4,16 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>marvelgame</artifactId>
+    <groupId>org.example.cardgame</groupId>
+    <artifactId>cardgame</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>domain</module>
         <module>business</module>
-        <module>application/app-service</module>
+        <module>applications</module>
+        <module>applications/app-service</module>
+        <module>applications/app-proxy</module>
     </modules>
-
     <properties>
         <springboot.version>2.5.4</springboot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
