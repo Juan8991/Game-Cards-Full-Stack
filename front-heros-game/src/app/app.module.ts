@@ -26,7 +26,6 @@ import { HeaderComponent } from './header/header.component';
     AngularFireAuthModule,
     HttpClientModule,
     GameModule
-
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
