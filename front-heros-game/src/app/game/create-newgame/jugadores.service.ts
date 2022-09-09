@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario.model';
-import { Game } from 'src/app/models/game.model';
+
 
 
 @Injectable({
@@ -22,13 +22,13 @@ export class JugadoresService{
   }
 
 
-  game(gamers: Array<string>): Observable<Game> {
+  /* game(gamers: Array<string>): Observable<Game> {
     return this.http.post<Game>(`${environment.urlBase}/juego/crear`, { gamers }, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-  }
+  } */
 
   async getJugadores(): Promise<Array<Usuario>>{
     const result = await new Promise<Usuario[]>((resolve, reject) => {

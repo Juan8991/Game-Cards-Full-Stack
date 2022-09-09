@@ -1,25 +1,10 @@
 <h1 class="title-list">Lista de Juegos</h1>
 
-
 <ul class="list-group">
-  <li class="list-group-item">
-    <span>Nombre Del Juego:  Tpsdo</span><br>
-    <span>Estado del Juego:   Iniciado</span><br>
-    <span>Cantidad de Jugadores:   5</span><br>
-    <button (click)="goBoard()" class="btn btn-primary">Entar</button>
-  </li>
-
-
-  <li class="list-group-item">
-    <span>Nombre Del Juego:   Portde</span><br>
-    <span>Estado del Juego:   Creado</span><br>
-    <span>Cantidad de Jugadores:   8</span><br>
-    <button (click)="goBoard()" class="btn btn-primary">Entar</button>
-  </li>
-  <li class="list-group-item">
-    <span>Nombre Del Juego:  OceansDdad</span><br>
-    <span>Estado del Juego:  Creado</span><br>
-    <span>Cantidad de Jugadores:   4</span><br>
+  <li class="list-group-item" *ngFor="let juego of dataSource">
+    <span>Id Del Juego:  {{juego.id}}</span><br>
+    <span>Estado del Juego:   {{juego.iniciado}}</span><br>
+    <span>Cantidad de Jugadores: {{juego.cantidadJugadores}}</span><br>
     <button (click)="goBoard()" class="btn btn-primary">Entar</button>
   </li>
 </ul>
