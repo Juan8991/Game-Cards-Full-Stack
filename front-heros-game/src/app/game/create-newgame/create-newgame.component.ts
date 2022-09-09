@@ -18,9 +18,13 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
   frmJugadores: FormGroup;
   jugadores!: Array<Usuario>;
   currentUser!: firebase.User | null
+  selectedUsers: Usuario[] = new Array<Usuario>();
   uuid : String;
 
-  constructor(private jugadores$: JugadoresService, private auth$: AuthService, private gameService : GameService, private socket : WebSocketService) {
+  constructor(private jugadores$: JugadoresService,
+    private auth$: AuthService,
+    private gameService : GameService,
+    private socket : WebSocketService) {
     this.frmJugadores = this.createFormJugadores();
     this.uuid = uuidv4();
   }
@@ -31,6 +35,7 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.jugadores = await this.jugadores$.getJugadores();
     this.currentUser = await this.auth$.getUserAuth();
+    this.selectedUsers = this.jugadores;
     this.jugadores = this.jugadores.filter(item => item.id !== this.currentUser?.uid);
     this.socket.connection(this.uuid).subscribe(
       {
@@ -42,20 +47,21 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
 
   }
   public submit(): void {
-    const gamers = this.frmJugadores.getRawValue();
-    gamers.jugadores.push(this.currentUser?.uid);
-    console.log("Submit", gamers);
-    this.jugadores$.game(gamers).subscribe({
-      next: (data: Game) => {
-        // Aquí hago algo con la información que llega del backend
-        console.log("Game", data);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log("Completed");
-      }
+    const slected=this.frmJugadores;
+    console.log("quetrae?",this.frmJugadores)
+    const jugadoresPalBack: any = {};
+    //console.log("jugadores Selecionados",this.selectedUsers)
+    this.selectedUsers.forEach(user => {
+      jugadoresPalBack[user.id] = `${user.name}`;
+    })
+    //console.log("jugadores pal back",JSON.stringify(jugadoresPalBack))
+    const command = {
+      juegoId : this.uuid,
+      jugadores : jugadoresPalBack,
+      jugadorPrincipalId: this.currentUser?.uid
+    }
+    this.gameService.createGame(command).subscribe(subcri =>{
+      console.log(subcri);
     });
   }
 

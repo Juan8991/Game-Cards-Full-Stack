@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://localhost:8080/',
+  urlBase: 'http://localhost:8080',
   firebaseConfig : {
     apiKey: "AIzaSyC_fDSvtAkgzol_-MvmaYuiKB9VjyV57l8",
     authDomain: "herosgame-d8f26.firebaseapp.com",

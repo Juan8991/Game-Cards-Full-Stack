@@ -1,10 +1,10 @@
 import { Card } from "./card.model";
 
 export interface Game {
-  game: [
-    {
-      gamerId: string;
-      mazo: Card[]
-    }
-  ]
+  juegoId: string,
+  jugadores: {
+  },
+  jugadorPrincipalId: string
+
+
 }

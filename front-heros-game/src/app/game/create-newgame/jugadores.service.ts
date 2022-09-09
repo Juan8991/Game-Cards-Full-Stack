@@ -20,10 +20,10 @@ export class JugadoresService{
   constructor(private storage: AngularFirestore, private http: HttpClient) {
     this.usersCollection = storage.collection<Usuario>('usuarios');
   }
- 
+
 
   game(gamers: Array<string>): Observable<Game> {
-    return this.http.post<Game>(`${environment.urlBase}/game`, { gamers }, {
+    return this.http.post<Game>(`${environment.urlBase}/juego/crear`, { gamers }, {
       headers: {
         'Content-Type': 'application/json'
       }
