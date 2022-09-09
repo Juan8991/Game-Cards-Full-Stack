@@ -7,12 +7,13 @@ import { TableGameComponent } from './table-game/table-game.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GameService } from './game.service';
+import { GameListComponent } from './game-list/game-list.component';
 
 
 
 
 @NgModule({
-  declarations: [CreateNewgameComponent,GameHomeComponent,TableGameComponent],
+  declarations: [CreateNewgameComponent,GameHomeComponent,TableGameComponent,GameListComponent],
   imports: [
     CommonModule,
     GameRoutingModule,

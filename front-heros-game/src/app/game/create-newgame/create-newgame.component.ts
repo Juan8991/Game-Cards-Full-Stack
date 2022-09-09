@@ -7,7 +7,7 @@ import { JugadoresService } from './jugadores.service';
 import firebase from 'firebase/compat';
 import { GameService } from '../game.service';
 import { v4 as uuidv4 } from 'uuid';
-import { WebSocketService } from '../web-socket.service';
+import { WebSocketService } from 'src/app/webSocket/web-socket.service';
 import { JugadoresModel } from 'src/app/models/jugadores.model';
 import { Router } from '@angular/router';
 
@@ -58,7 +58,6 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
     console.log("quetrae?",slected)
     slected.jugadores.push([this.currentUser!.uid,this.currentUser!.displayName])
     const jugadoresPalBack: any = {};
-    //console.log("jugadores Selecionados",this.selectedUsers)
     slected.jugadores.forEach((user: (string | number)[]) => {
       jugadoresPalBack[user[0]] = `${user[1]}`;
     })
@@ -79,7 +78,7 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
       jugadores: new FormControl(null, [Validators.required]),
     });
   }
-  sendGamer(){
+  /* sendGamer(){
     this.gameService.createGame({
 
       "juegoId": this.uuid,
@@ -91,11 +90,11 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
   }).subscribe(subcri =>{
     console.log(subcri);
   });
-
+ */
   }
 
 
-}
+
 
 
 

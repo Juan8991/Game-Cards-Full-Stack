@@ -1,11 +1,15 @@
+span{
+  font-size: 18px;
+}
 .list-group{
   position: relative;
   margin-top: 20px;
-  width: 280px;
+  width: 350px;
   top: 50%;
   left: 30%;
 }
 .title-list{
+  color: rgb(255, 255, 255);
   position: relative;
   margin-top: 100px;
   top: 50%;

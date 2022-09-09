@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { GameModule } from './game/game.module';
 import { PageNotFoundComponent } from './game/page-not-found/page-not-found.component';
@@ -25,7 +26,8 @@ import { HeaderComponent } from './header/header.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     HttpClientModule,
-    GameModule
+    GameModule,
+    AuthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
