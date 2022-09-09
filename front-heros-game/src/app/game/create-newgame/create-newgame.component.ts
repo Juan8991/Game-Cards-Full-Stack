@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Game } from 'src/app/models/game.model';
 import { Usuario } from 'src/app/models/usuario.model';
 import { JugadoresService } from './jugadores.service';
 import firebase from 'firebase/compat';
@@ -57,19 +56,18 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
     const slected=this.frmJugadores.getRawValue();
     console.log("quetrae?",slected)
     slected.jugadores.push([this.currentUser!.uid,this.currentUser!.displayName])
-    const jugadoresPalBack: any = {};
+    const jugadores: any = {};
     slected.jugadores.forEach((user: (string | number)[]) => {
-      jugadoresPalBack[user[0]] = `${user[1]}`;
+      jugadores[user[0]] = `${user[1]}`;
     })
-    console.log("jugadores pal back",JSON.stringify(jugadoresPalBack))
-    /*  const command = {
-      juegoId : this.uuid,
-      jugadores : jugadoresPalBack,
+    console.log("jugadores pal back",JSON.stringify(jugadores))
+    const command = {
+      juegoId: this.uuid,
+      jugadores: jugadores,
       jugadorPrincipalId: this.currentUser?.uid
     }
-    this.gameService.createGame(command).subscribe(subcri =>{
-      console.log(subcri);
-    }); */
+    console.log("comando",command)
+    this.gameService.createGame(command).subscribe();
     this.router.navigate(['/game/games']);
   }
 
@@ -78,20 +76,7 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
       jugadores: new FormControl(null, [Validators.required]),
     });
   }
-  /* sendGamer(){
-    this.gameService.createGame({
-
-      "juegoId": this.uuid,
-      "jugadores": {
-          "uid-001": "camilo",
-          "uid-002": "andres"
-      },
-      "jugadorPrincipalId": "uid-001"
-  }).subscribe(subcri =>{
-    console.log(subcri);
-  });
- */
-  }
+}
 
 
 
