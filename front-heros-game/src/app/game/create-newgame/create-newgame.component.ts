@@ -8,6 +8,8 @@ import firebase from 'firebase/compat';
 import { GameService } from '../game.service';
 import { v4 as uuidv4 } from 'uuid';
 import { WebSocketService } from '../web-socket.service';
+import { JugadoresModel } from 'src/app/models/jugadores.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-newgame',
@@ -16,13 +18,18 @@ import { WebSocketService } from '../web-socket.service';
 })
 export class CreateNewgameComponent implements OnInit, OnDestroy {
   frmJugadores: FormGroup;
+  formugadores= new FormGroup({
+    jugadorName: new FormControl(""),
+    jugadorId: new FormControl("")
+  })
   jugadores!: Array<Usuario>;
   currentUser!: firebase.User | null
-  selectedUsers: Usuario[] = new Array<Usuario>();
+  selectedUsers: JugadoresModel[] = new Array<JugadoresModel>();
   uuid : String;
 
   constructor(private jugadores$: JugadoresService,
     private auth$: AuthService,
+    private router: Router,
     private gameService : GameService,
     private socket : WebSocketService) {
     this.frmJugadores = this.createFormJugadores();
@@ -35,7 +42,6 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.jugadores = await this.jugadores$.getJugadores();
     this.currentUser = await this.auth$.getUserAuth();
-    this.selectedUsers = this.jugadores;
     this.jugadores = this.jugadores.filter(item => item.id !== this.currentUser?.uid);
     this.socket.connection(this.uuid).subscribe(
       {
@@ -46,23 +52,26 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
     );
 
   }
+
   public submit(): void {
-    const slected=this.frmJugadores;
-    console.log("quetrae?",this.frmJugadores)
+    const slected=this.frmJugadores.getRawValue();
+    console.log("quetrae?",slected)
+    slected.jugadores.push([this.currentUser!.uid,this.currentUser!.displayName])
     const jugadoresPalBack: any = {};
     //console.log("jugadores Selecionados",this.selectedUsers)
-    this.selectedUsers.forEach(user => {
-      jugadoresPalBack[user.id] = `${user.name}`;
+    slected.jugadores.forEach((user: (string | number)[]) => {
+      jugadoresPalBack[user[0]] = `${user[1]}`;
     })
-    //console.log("jugadores pal back",JSON.stringify(jugadoresPalBack))
-    const command = {
+    console.log("jugadores pal back",JSON.stringify(jugadoresPalBack))
+    /*  const command = {
       juegoId : this.uuid,
       jugadores : jugadoresPalBack,
       jugadorPrincipalId: this.currentUser?.uid
     }
     this.gameService.createGame(command).subscribe(subcri =>{
       console.log(subcri);
-    });
+    }); */
+    this.router.navigate(['/game/games']);
   }
 
   private createFormJugadores(): FormGroup {
@@ -87,5 +96,7 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
 
 
 }
+
+
 
 

@@ -1,19 +1,39 @@
-#frmJugadores{
+.div-crearjuego{
+  display: block;
   position: relative;
-  margin-top: 100px;
+  justify-content: center;
+  margin-top: 10px;
   top: 50%;
   left: 30%;
+  width: 400px;
+  height: 254px;
+  padding: 5px;
+  border-radius: 1rem;
+  overflow: visible;
+  background: rgba(249, 245, 236, 0.606);
+  position: relative;
+  z-index: 1;
+}
 
+#frmJugadores{
+
+}
+.jugadores{
+  width: 300px;
+  justify-content: center;
+  margin: 5px 5px;
 }
 .h2-title{
   position: relative;
   margin-top: 100px;
+  color: black;
   top: 50%;
   left: 30%;
 }
 .btn{
-  position: relative;
-  margin-top: 100px;
-  top: 50%;
-  left: 30%;
+
+}
+option{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 17px;
 }

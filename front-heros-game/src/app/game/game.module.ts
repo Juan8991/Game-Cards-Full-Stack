@@ -5,6 +5,9 @@ import { CreateNewgameComponent } from './create-newgame/create-newgame.componen
 import { GameHomeComponent } from './game-home/game-home.component';
 import { TableGameComponent } from './table-game/table-game.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { GameService } from './game.service';
+
 
 
 
@@ -14,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     GameRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class GameModule { }

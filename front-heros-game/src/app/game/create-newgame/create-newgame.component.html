@@ -1,9 +1,10 @@
 
 
 <h2 class="h2-title">Mi primer formulario reactivo</h2>
-<form id="frmJugadores" [formGroup]="frmJugadores" (ngSubmit)="frmJugadores.valid ? submit() : false">
+<div class ="div-crearjuego">
+  <form id="frmJugadores" [formGroup]="frmJugadores" (ngSubmit)="frmJugadores.valid ? submit() : false">
   <select name="jugadores" multiple class="jugadores" formControlName="jugadores">
-    <option type="checkbox" *ngFor="let jugador of jugadores" [value]="jugador.id">
+    <option *ngFor="let jugador of jugadores" [value]="[jugador.id,jugador.name]">
       {{ jugador.name }}
     </option>
   </select>
@@ -12,9 +13,10 @@
     jugador</div>
   <br>
 </form>
-
 <button form="frmJugadores" class="btn btn-primary" type="submit" [disabled]="frmJugadores.invalid">Crear
   Juego</button>
+</div>
+
 
 <!-- <button (click)="sendGamer()">ENVIAR JUEGO AL BACK</button> -->
 
