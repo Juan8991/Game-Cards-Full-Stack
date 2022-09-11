@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * The type Tablero creado.
  */
-public class TableroCreado extends DomainEvent {
+public class  TableroCreado extends DomainEvent {
     private final TableroId tableroId;
     private final Set<JugadorId> jugadorIds;
 

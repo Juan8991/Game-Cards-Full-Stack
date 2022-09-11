@@ -38,6 +38,9 @@ public class MazoMaterializeHandle {
     //TODO: handle Jugador Agregado
     @EventListener
     public void handleJugadorAgregado(JugadorAgregado event) {
+        /**
+         * Mazo view en la base de datos
+         */
         var mazo = event.getMazo().value();
         var data = new Document();
         var cartas = new ArrayList<>();

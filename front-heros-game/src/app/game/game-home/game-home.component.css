@@ -5,8 +5,9 @@
   background-color: rgba(57, 134, 228, 0);
   /* centrar vertical y horizontalmente  */
   position: relative;
-  top: 50%;
-  left: 30%;
+  width: auto;
+  top: 15%;
+  left: 40%;
 }
 .card-body{
 }

@@ -3,16 +3,15 @@ span{
 }
 .list-group{
   position: relative;
-  margin-top: 20px;
   width: 350px;
-  top: 50%;
+  top: 10%;
   left: 30%;
 }
 .title-list{
   color: rgb(255, 255, 255);
   position: relative;
   margin-top: 100px;
-  top: 50%;
+  top: 10%;
   left: 30%;
 }
 span{

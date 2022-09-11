@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { WebSocketService } from 'src/app/webSocket/web-socket.service';
 import { JugadoresModel } from 'src/app/models/jugadores.model';
 import { Router } from '@angular/router';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-create-newgame',
@@ -68,7 +69,8 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
     }
     console.log("comando",command)
     this.gameService.createGame(command).subscribe();
-    this.router.navigate(['/game/games']);
+    //debugger;
+    setTimeout(()=>this.router.navigate(['/game/games']),400)
   }
 
   private createFormJugadores(): FormGroup {

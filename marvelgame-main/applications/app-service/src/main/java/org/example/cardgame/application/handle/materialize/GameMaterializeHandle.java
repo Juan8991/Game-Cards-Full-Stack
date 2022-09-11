@@ -31,6 +31,9 @@ public class GameMaterializeHandle {
 
     @EventListener
     public void handleJuegoCreado(JuegoCreado event) {
+        /**
+         * Gameview en la base de datos mongodb
+         */
         var data = new HashMap<>();
         data.put("_id", event.aggregateRootId());
         data.put("fecha", Instant.now());
