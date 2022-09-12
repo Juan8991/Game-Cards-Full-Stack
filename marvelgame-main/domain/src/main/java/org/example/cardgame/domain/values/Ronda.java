@@ -5,19 +5,14 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Set;
 
 /**
- * The type Ronda.
+ *
  */
 public class Ronda implements ValueObject<Ronda.Props> {
     private final Set<JugadorId> jugadores;
     private final Integer numero;
     private final Boolean estaIniciada;
 
-    /**
-     * Instantiates a new Ronda.
-     *
-     * @param numero    the numero
-     * @param jugadores the jugadores
-     */
+
     public Ronda(Integer numero, Set<JugadorId> jugadores) {
         this.jugadores = jugadores;
         this.numero = numero;
@@ -27,11 +22,16 @@ public class Ronda implements ValueObject<Ronda.Props> {
     private Ronda(Integer numero, Set<JugadorId> jugadores, Boolean estaIniciada) {
         this.jugadores = jugadores;
         this.numero = numero;
-        this.estaIniciada = estaIniciada;
+        this.estaIniciada = estaIniciada;//TODO:CAMBIADO PUEDE SE FALSE
+        if(numero <= 0){
+            throw new IllegalArgumentException("El numero de la ronda debe no puede ser cero o negativo");
+        }
+        if(jugadores.size() <= 1){
+            throw new IllegalArgumentException("La ronda se crear con minimo 2 jugadores");
+        }
     }
 
     /**
-     * Iniciar ronda ronda.
      *
      * @return the ronda
      */
@@ -40,7 +40,7 @@ public class Ronda implements ValueObject<Ronda.Props> {
     }
 
     /**
-     * Terminar ronda ronda.
+     *
      *
      * @return the ronda
      */
@@ -83,25 +83,11 @@ public class Ronda implements ValueObject<Ronda.Props> {
      * The interface Props.
      */
     public interface Props {
-        /**
-         * Jugadores set.
-         *
-         * @return the set
-         */
+
         Set<JugadorId> jugadores();
 
-        /**
-         * Numero integer.
-         *
-         * @return the integer
-         */
         Integer numero();
 
-        /**
-         * Esta iniciada boolean.
-         *
-         * @return the boolean
-         */
         Boolean estaIniciada();
     }
 }

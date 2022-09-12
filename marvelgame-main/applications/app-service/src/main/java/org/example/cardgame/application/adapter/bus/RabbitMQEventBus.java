@@ -6,6 +6,7 @@ import org.example.cardgame.application.ApplicationConfig;
 import org.example.cardgame.application.GsonEventSerializer;
 import org.example.cardgame.application.generic.EventBus;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,10 +14,11 @@ public class RabbitMQEventBus implements EventBus {
 
     private final RabbitTemplate rabbitTemplate;
     private final GsonEventSerializer serializer;
-
-    public RabbitMQEventBus(RabbitTemplate rabbitTemplate,  GsonEventSerializer serializer) {
+    private final ApplicationEventPublisher applicationEventPublisher;
+    public RabbitMQEventBus(RabbitTemplate rabbitTemplate, GsonEventSerializer serializer, ApplicationEventPublisher applicationEventPublisher) {
         this.serializer = serializer;
         this.rabbitTemplate = rabbitTemplate;
+        this.applicationEventPublisher = applicationEventPublisher;
     }
 
     @Override

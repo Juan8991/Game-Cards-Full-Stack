@@ -1,7 +1,7 @@
 <h1 class="title-list">Lista de Juegos</h1>
 
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let juego of dataSource">
+  <li class="list-group-item" *ngFor="let juego of dataSource; index as i">
     <span>Id Del Juego:  {{juego.id}}</span><br>
     <span>Estado del Juego:   {{juego.iniciado}}</span><br>
     <span>Cantidad de Jugadores: {{juego.cantidadJugadores}}</span><br>

@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -61,6 +62,17 @@ public class QueryHandle {
                         .flatMap(element -> ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(BodyInserters.fromPublisher(Mono.just(element), MazoViewModel.class)))
+        );
+    }
+    @Bean
+    public RouterFunction<ServerResponse> mazoPorJugador() {
+        return RouterFunctions.route(
+                GET("/jugador/mazo/{uid}"),
+                request -> template.find(filterByUId(request.pathVariable("uid")), MazoViewModel.class, "mazoview")
+                        .collectList()
+                        .flatMap(list -> ServerResponse.ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(BodyInserters.fromPublisher(Flux.fromIterable(list), MazoViewModel.class)))
         );
     }
 

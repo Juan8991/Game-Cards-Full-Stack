@@ -1,7 +1,7 @@
-package org.example.cardgame.usecase.gateway;
+package org.example.cardgame.gateway;
 
 
-import org.example.cardgame.usecase.gateway.model.CartaMaestra;
+import org.example.cardgame.gateway.model.CartaMaestra;
 import reactor.core.publisher.Flux;
 
 

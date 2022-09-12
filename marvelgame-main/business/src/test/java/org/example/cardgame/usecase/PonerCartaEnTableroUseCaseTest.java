@@ -1,4 +1,4 @@
-package org.example.cardgame.usecase.usecase;
+package org.example.cardgame.usecase;
 
 
 import co.com.sofka.domain.generic.DomainEvent;
@@ -16,7 +16,7 @@ import org.example.cardgame.domain.values.JugadorId;
 import org.example.cardgame.domain.values.Mazo;
 import org.example.cardgame.domain.values.Ronda;
 import org.example.cardgame.domain.values.TableroId;
-import org.example.cardgame.usecase.gateway.JuegoDomainEventRepository;
+import org.example.cardgame.gateway.JuegoDomainEventRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

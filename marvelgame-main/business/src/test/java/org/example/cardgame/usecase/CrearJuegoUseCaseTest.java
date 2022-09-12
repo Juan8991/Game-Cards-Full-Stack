@@ -1,10 +1,10 @@
-package org.example.cardgame.usecase.usecase;
+package org.example.cardgame.usecase;
 
 import org.example.cardgame.domain.command.CrearJuegoCommand;
 import org.example.cardgame.domain.events.JuegoCreado;
 import org.example.cardgame.domain.events.JugadorAgregado;
-import org.example.cardgame.usecase.gateway.ListaDeCartaService;
-import org.example.cardgame.usecase.gateway.model.CartaMaestra;
+import org.example.cardgame.gateway.ListaDeCartaService;
+import org.example.cardgame.gateway.model.CartaMaestra;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,6 @@ import reactor.test.StepVerifier;
 
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 

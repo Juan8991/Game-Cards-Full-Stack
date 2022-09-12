@@ -1,4 +1,4 @@
-package org.example.cardgame.usecase.gateway.model;
+package org.example.cardgame.gateway.model;
 
 public class CartaMaestra {
     private String id;

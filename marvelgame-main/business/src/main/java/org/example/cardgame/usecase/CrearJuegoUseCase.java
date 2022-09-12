@@ -1,12 +1,12 @@
-package org.example.cardgame.usecase.usecase;
+package org.example.cardgame.usecase;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.cardgame.domain.Juego;
 import org.example.cardgame.domain.JugadorFactory;
 import org.example.cardgame.domain.command.CrearJuegoCommand;
 import org.example.cardgame.domain.values.*;
-import org.example.cardgame.usecase.gateway.ListaDeCartaService;
-import org.example.cardgame.usecase.gateway.model.CartaMaestra;
+import org.example.cardgame.gateway.ListaDeCartaService;
+import org.example.cardgame.gateway.model.CartaMaestra;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -31,7 +31,9 @@ public class CrearJuegoUseCase extends UseCaseForCommand<CrearJuegoCommand> {
                             .forEach((id, alias) ->
                                     factory.agregarJugador(JugadorId.of(id), alias, generarMazo(cartas))
                             );
-                    var juego = new Juego(JuegoId.of(command.getJuegoId()), JugadorId.of(command.getJugadorPrincipalId()), factory);
+                    var juego = new Juego(JuegoId.of(command.getJuegoId()),
+                            JugadorId.of(command.getJugadorPrincipalId()),
+                            factory);
                     return juego.getUncommittedChanges();
                 }));
 

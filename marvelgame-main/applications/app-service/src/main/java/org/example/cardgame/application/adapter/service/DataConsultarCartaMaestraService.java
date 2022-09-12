@@ -1,7 +1,7 @@
 package org.example.cardgame.application.adapter.service;
 
-import org.example.cardgame.usecase.gateway.ListaDeCartaService;
-import org.example.cardgame.usecase.gateway.model.CartaMaestra;
+import org.example.cardgame.gateway.ListaDeCartaService;
+import org.example.cardgame.gateway.model.CartaMaestra;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;

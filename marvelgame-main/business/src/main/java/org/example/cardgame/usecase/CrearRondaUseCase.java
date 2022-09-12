@@ -1,4 +1,4 @@
-package org.example.cardgame.usecase.usecase;
+package org.example.cardgame.usecase;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.cardgame.domain.Juego;
@@ -6,7 +6,7 @@ import org.example.cardgame.domain.command.CrearRondaCommand;
 import org.example.cardgame.domain.values.JuegoId;
 import org.example.cardgame.domain.values.JugadorId;
 import org.example.cardgame.domain.values.Ronda;
-import org.example.cardgame.usecase.gateway.JuegoDomainEventRepository;
+import org.example.cardgame.gateway.JuegoDomainEventRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

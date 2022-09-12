@@ -1,4 +1,4 @@
-package org.example.cardgame.usecase.gateway;
+package org.example.cardgame.gateway;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import reactor.core.publisher.Flux;
