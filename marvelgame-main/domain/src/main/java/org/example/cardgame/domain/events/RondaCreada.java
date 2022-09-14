@@ -12,7 +12,7 @@ public class RondaCreada extends DomainEvent {
         this.ronda = ronda;
         this.tiempo = tiempo;
     }
-    
+
     public Ronda getRonda() {
         return ronda;
     }

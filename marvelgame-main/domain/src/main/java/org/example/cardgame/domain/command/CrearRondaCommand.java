@@ -31,38 +31,18 @@ public class CrearRondaCommand extends Command {
         this.jugadores = jugadores;
     }
 
-    /**
-     * Gets juego id.
-     *
-     * @return the juego id
-     */
     public String getJuegoId() {
         return juegoId;
     }
 
-    /**
-     * Sets juego id.
-     *
-     * @param juegoId the juego id
-     */
     public void setJuegoId(String juegoId) {
         this.juegoId = juegoId;
     }
 
-    /**
-     * Gets tiempo.
-     *
-     * @return the tiempo
-     */
     public Integer getTiempo() {
         return tiempo;
     }
 
-    /**
-     * Sets tiempo.
-     *
-     * @param tiempo the tiempo
-     */
     public void setTiempo(Integer tiempo) {
         this.tiempo = tiempo;
     }
