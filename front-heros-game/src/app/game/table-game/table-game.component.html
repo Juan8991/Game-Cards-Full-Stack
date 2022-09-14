@@ -31,7 +31,7 @@
         />
       <div class="card-info">
         <p class="text-title ">Poder: {{card.poder}}</p>
-        <button class="btn btn-primary" (click)="ponerCarta(card.cartaId)">Poner</button>
+        <button class="btn btn-primary" (click)="ponerCarta(card.cartaId)" [disabled]="btnIniciarHabilitado">Poner</button>
       </div>
     </div>
 </div>

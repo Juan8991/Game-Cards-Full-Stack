@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Route } from '@angular/router';
+import { ActivatedRoute, EventType, Params, Route } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -51,9 +51,10 @@ export class TableGameComponent implements OnInit {
       this.jugadoresRonda = event.tablero.jugadores.length;
       this.indexRonda = event.ronda.numero;
     });
-    //Socket
+    //Socket conexion
     this.webSocket.connection(this.juegoId).subscribe({
       next: (event: any) => {
+        console.log("EVENTOTYPE",event.type)
         if (event.type === 'cardgame.tiempocambiadodeltablero') {
           this.tiempo = event.tiempo;
         }
@@ -78,9 +79,24 @@ export class TableGameComponent implements OnInit {
             .filter((item) => item.cartaId !== event.carta.cartaId.uuid);
 
         }
+        if(event.type === 'cardgame.rondainiciada'){
+          //this.roundStarted = true;
+        }
+
+        if(event.type === 'cargame.rondaterminada'){
+          //this.roundStarted = false;
+        }
+        if(event.type === 'cargame.cartasasignadasajugador'){
+          console.log("eventoG",event.body)
+          //this.roundStarted = false;
+        }
       },
     });
 
+  }
+  //Cerrando conexion
+  ngOnDestroy(): void {
+    this.webSocket.closedConnection();
   }
   iniciarRonda() {
     this.gameService.iniciarRonda({ juegoId: this.juegoId }).subscribe();

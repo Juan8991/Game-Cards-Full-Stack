@@ -24,8 +24,9 @@ export class GameListComponent implements OnInit {
 
   async ngOnInit() {
     this.currentUser = await this.authService.getUserAuth();
-    this.gameService.listarJuegos(this.currentUser!.uid).subscribe(juego => this.dataSource=juego);
+    //this.gameService.listarJuegos(this.currentUser!.uid).subscribe(juego => this.dataSource=juego);
     //window.location.reload();
+    this.gameService.listarTodosLosJuegos().subscribe(juego => this.dataSource=juego);
  }
   goBoard(id:string){
 
