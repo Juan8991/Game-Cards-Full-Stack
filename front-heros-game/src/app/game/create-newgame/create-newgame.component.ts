@@ -41,7 +41,8 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
 
   async ngOnInit(): Promise<void> {
     this.jugadores = await this.jugadores$.getJugadores();
-    this.currentUser = await this.auth$.getUserAuth();
+    //this.currentUser = await this.auth$.getUserAuth();
+    this.currentUser = this.auth$.obtenerUsuarioSesion();
     this.jugadores = this.jugadores.filter(item => item.id !== this.currentUser?.uid);
     this.socket.connection(this.uuid).subscribe(
       {

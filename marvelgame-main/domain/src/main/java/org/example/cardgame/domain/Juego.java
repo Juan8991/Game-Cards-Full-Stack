@@ -9,38 +9,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * The type Juego.
- */
 public class Juego extends AggregateEvent<JuegoId> {
-    /**
-     * The Jugadores.
-     */
+
     protected Map<JugadorId, Jugador> jugadores;
-    /**
-     * The Tablero.
-     */
+
     protected Tablero tablero;
-    /**
-     * The Ganador.
-     */
+
     protected Jugador ganador;
-    /**
-     * The Ronda.
-     */
+
     protected Ronda ronda;
-    /**
-     * The Jugador principal.
-     */
     protected JugadorId jugadorPrincipal;
 
-    /**
-     * Instantiates a new Juego.
-     *
-     * @param id             the id
-     * @param uid            the uid
-     * @param jugadorFactory the jugador factory
-     */
     public Juego(JuegoId id, JugadorId uid, JugadorFactory jugadorFactory) {
         super(id);
         appendChange(new JuegoCreado(uid)).apply();

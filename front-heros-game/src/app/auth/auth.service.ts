@@ -12,7 +12,8 @@ export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
   loggedIn$ = this.loggedIn.asObservable();
   constructor(
-    public afAuth: AngularFireAuth,private router: Router, // Inject Firebase auth service
+    public afAuth: AngularFireAuth,
+    private router: Router, // Inject Firebase auth service
     private gamers$: JugadoresService
 
   ){}
@@ -27,12 +28,21 @@ export class AuthService {
       .then((result) => {
         console.log('You have been successfully logged in!');
         this.loggedIn.next(true);
+        localStorage.setItem('user', JSON.stringify(result.user));
+        JSON.parse(localStorage.getItem('user')!);
         this.gamers$.addGamer(result.user);
         this.redirectToHome();
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+  obtenerUsuarioSesion(){
+    return JSON.parse(localStorage.getItem('user')!);
+    /* if (this.loggedIn$) {
+      return JSON.parse(localStorage.getItem('user')!);
+    }
+    throw new Error("No found uid"); */
   }
   logOutUser(){
     this.loggedIn.next(false);

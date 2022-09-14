@@ -4,9 +4,7 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-/**
- * The type Carta.
- */
+
 public class Carta implements ValueObject<Carta.Props>, Comparable<Carta> {
 
     private final CartaMaestraId cartaId;

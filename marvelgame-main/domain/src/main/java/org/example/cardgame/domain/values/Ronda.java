@@ -4,9 +4,6 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Set;
 
-/**
- *
- */
 public class Ronda implements ValueObject<Ronda.Props> {
     private final Set<JugadorId> jugadores;
     private final Integer numero;
@@ -31,29 +28,15 @@ public class Ronda implements ValueObject<Ronda.Props> {
         }
     }
 
-    /**
-     *
-     * @return the ronda
-     */
+
     public Ronda iniciarRonda() {
         return new Ronda(this.numero, this.jugadores, true);
     }
 
-    /**
-     *
-     *
-     * @return the ronda
-     */
     public Ronda terminarRonda() {
         return new Ronda(this.numero, this.jugadores, false);
     }
 
-    /**
-     * Incrementar ronda ronda.
-     *
-     * @param jugadores the jugadores
-     * @return the ronda
-     */
     public Ronda incrementarRonda(Set<JugadorId> jugadores) {
         return new Ronda(this.numero + 1, jugadores, false);
     }
@@ -78,10 +61,6 @@ public class Ronda implements ValueObject<Ronda.Props> {
         };
     }
 
-
-    /**
-     * The interface Props.
-     */
     public interface Props {
 
         Set<JugadorId> jugadores();

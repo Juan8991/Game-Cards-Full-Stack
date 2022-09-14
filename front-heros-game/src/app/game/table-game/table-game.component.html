@@ -1,71 +1,39 @@
 
 <div class="wrapper">
   <div class="header-board"><span>Ronda: 1</span><br>
-    <span>Jugadores: 1</span>
-    <h3>Tiempo: 50</h3>
-    <a routerLink="/" class="btn btn-primary" aria-disabled="true">Iniciar</a>
+    <span>Jugadores: {{jugadoresRonda}}</span>
+    <h3>Tiempo: {{tiempo}}</h3>
+    <button (click)="iniciarRonda()" class="btn btn-primary" [disabled]="!btnIniciarHabilitado">Iniciar Ronda</button>
   </div>
+  <!-- Cartas del Tablero -->
   <div class="bet-table">
     <h4>Tablero de apuestas</h4>
-    <br>
-    <div>
+    <div class="card" *ngFor="let card of cartasDelTablero">
       <img
-      class="img-table"
-      alt="Angular Logo"
-      src="../assets/img/0BF.jpg"
-      />
-
+        class="img-mazo"
+        alt="carta"
+        src="{{card.url}}"
+        />
+      <div class="card-info">
+        <p class="text-title ">Poder: {{card.poder}}</p>
+      </div>
     </div>
-    <div>
-      <img
-      class="img-table"
-      alt="Angular Logo"
-      src="../assets/img/7EB.jpg"
-      />
-    </div>
-
   </div>
+
+  <!-- Cartas del mazo -->
   <div class="gamer-cards">
     <h4>Mazo jugador</h4>
-    <div class="card">
-      <div class="card-img">
-        <img
-        class="img-mazo"
-        alt="carta"
-        src="../assets/img/7EB.jpg"
-        />
-      </div>
-      <div class="card-info">
-        <p class="text-title">Poder:2300</p>
-        <!-- <p class="text-body">Nombre:CARD.PNG</p> -->
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-        <img
-        class="img-mazo"
-        alt="carta"
-        src="../assets/img/2E2.jpg"
-        />
-      </div>
-      <div class="card-info">
-        <p class="text-title">Poder:2300</p>
-        <!-- <p class="text-body">Nombre:CARD.PNG</p> -->
-      </div>
-    </div>
-  <div class="card">
-    <div class="card-img">
+    <div class="card" *ngFor="let card of cartasDelJugador">
       <img
-      class="img-mazo"
-      alt="carta"
-      src="../assets/img/99A.jpg"
-      />
+        class="img-mazo"
+        alt="carta"
+        src="{{card.url}}"
+        />
+      <div class="card-info">
+        <p class="text-title ">Poder: {{card.poder}}</p>
+        <button class="btn btn-primary" (click)="ponerCarta(card.cartaId)">Poner</button>
+      </div>
     </div>
-    <div class="card-info">
-      <p class="text-title">Poder:2300</p>
-      <!-- <p class="text-body">Nombre:CARD.PNG</p> -->
-    </div>
-  </div>
 </div>
 
 
