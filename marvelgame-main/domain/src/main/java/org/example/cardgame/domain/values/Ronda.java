@@ -23,9 +23,9 @@ public class Ronda implements ValueObject<Ronda.Props> {
         if(numero <= 0){
             throw new IllegalArgumentException("El numero de la ronda debe no puede ser cero o negativo");
         }
-        if(jugadores.size() <= 1){
+        /*if(jugadores.size() <= 1){
             throw new IllegalArgumentException("La ronda se crear con minimo 2 jugadores");
-        }
+        }*/
     }
 
 

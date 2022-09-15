@@ -4,29 +4,17 @@ import co.com.sofka.domain.generic.Command;
 
 import java.util.Set;
 
-/**
- * The type Crear ronda command.
- */
+
 public class CrearRondaCommand extends Command {
     private String juegoId;
     private Integer tiempo;
     private Set<String> jugadores;
 
 
-    /**
-     * Gets jugadores.
-     *
-     * @return the jugadores
-     */
     public Set<String> getJugadores() {
         return jugadores;
     }
 
-    /**
-     * Sets jugadores.
-     *
-     * @param jugadores the jugadores
-     */
     public void setJugadores(Set<String> jugadores) {
         this.jugadores = jugadores;
     }

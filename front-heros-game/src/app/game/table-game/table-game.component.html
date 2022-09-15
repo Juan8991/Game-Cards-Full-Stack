@@ -1,7 +1,9 @@
 
 <div class="wrapper">
-  <div class="header-board"><span>Ronda: 1</span><br>
-    <span>Jugadores: {{jugadoresRonda}}</span>
+  <div class="header-board"><span>Ronda: {{indexRonda}}</span><br>
+    <span>Jugadores: {{jugadoresRonda}}</span><br>
+    <span>Ganador Partida: {{ganadorPartidaAlias}}</span><br>
+    <!-- <span *ngIf="hasGanado">Ganaste!</span><br> -->
     <h3>Tiempo: {{tiempo}}</h3>
     <button (click)="iniciarRonda()" class="btn btn-primary" [disabled]="!btnIniciarHabilitado">Iniciar Ronda</button>
   </div>
@@ -12,10 +14,10 @@
       <img
         class="img-mazo"
         alt="carta"
-        src="{{card.url}}"
+         src="../assets/img/detrasCarta.png"
         />
       <div class="card-info">
-        <p class="text-title ">Poder: {{card.poder}}</p>
+        <p class="text-title ">Id: {{card.cartaId}}</p>
       </div>
     </div>
   </div>

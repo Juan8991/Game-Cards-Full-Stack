@@ -25,7 +25,6 @@ export class GameListComponent implements OnInit {
   async ngOnInit() {
     this.currentUser = await this.authService.getUserAuth();
     //this.gameService.listarJuegos(this.currentUser!.uid).subscribe(juego => this.dataSource=juego);
-    //window.location.reload();
     this.gameService.listarTodosLosJuegos().subscribe(juego => this.dataSource=juego);
  }
   goBoard(id:string){
@@ -34,7 +33,6 @@ export class GameListComponent implements OnInit {
   }
   IniciarJuego(id: string){
     this.webSocket.connection(id).subscribe({
-
        next: (event:any) => {
         console.log("EventTYPE",event.type)
           if(event.type === 'cardgame.tablerocreado'){
@@ -44,7 +42,6 @@ export class GameListComponent implements OnInit {
               jugadores: event.jugadorIds.map((it:any) => it.uuid)}
             console.log("comando",command)
             this.gameService.crearRonda(command);
-            //event.type='cardgame.rondacreada'
           }
           console.log("EventTYPE2",event.type)
           if(event.type == 'cardgame.rondacreada'){

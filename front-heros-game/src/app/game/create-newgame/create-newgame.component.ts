@@ -70,8 +70,7 @@ export class CreateNewgameComponent implements OnInit, OnDestroy {
     }
     console.log("comando",command)
     this.gameService.createGame(command).subscribe();
-    //debugger;
-    setTimeout(()=>this.router.navigate(['/game/games']),600)
+    setTimeout(()=>this.router.navigate(['/game/games']),900)
   }
 
   private createFormJugadores(): FormGroup {

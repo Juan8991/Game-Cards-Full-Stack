@@ -3,13 +3,16 @@
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let juego of dataSource; index as i">
     <span>Id Del Juego:  {{juego.id}}</span><br>
-    <span>Estado del Juego:   {{juego.iniciado}}</span><br>
+    <span>Juego Iniciado:   {{juego.iniciado}}</span><br>
+    <span>Juego finalizado:   {{juego.finalizado}}</span><br>
     <span>Cantidad de Jugadores: {{juego.cantidadJugadores}}</span><br>
-    <ng-container *ngIf="!juego.iniciado">
-      <button (click)="IniciarJuego(juego.id)" class="btn btn-primary">Iniciar</button>
-    </ng-container>
-    <ng-container *ngIf="juego.iniciado">
-      <button (click)="goBoard(juego.id)" class="btn btn-primary">Entar</button>
+    <ng-container *ngIf="!juego.finalizado">
+      <ng-container *ngIf="!juego.iniciado">
+        <button (click)="IniciarJuego(juego.id)" class="btn btn-primary">Iniciar</button>
+      </ng-container>
+      <ng-container *ngIf="juego.iniciado">
+        <button (click)="goBoard(juego.id)" class="btn btn-primary">Entar</button>
+      </ng-container>
     </ng-container>
 
   </li>
