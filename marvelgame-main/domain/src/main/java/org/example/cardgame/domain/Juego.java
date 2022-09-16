@@ -62,8 +62,8 @@ public class Juego extends AggregateEvent<JuegoId> {
      * @param ronda  the ronda
      * @param tiempo the tiempo
      */
-    public void crearRonda(Ronda ronda, Integer tiempo) {
-        appendChange(new RondaCreada(ronda, tiempo)).apply();
+    public void crearRonda(Ronda ronda, Integer tiempo, String idJugadorElegido) {
+        appendChange(new RondaCreada(ronda, tiempo,idJugadorElegido)).apply();
     }
 
     /**
@@ -90,38 +90,19 @@ public class Juego extends AggregateEvent<JuegoId> {
 
     /**
      * Quitar carta en tablero.
-     *
-     * @param tableroId the tablero id
-     * @param jugadorId the jugador id
-     * @param carta     the carta
      */
     public void quitarCartaEnTablero(TableroId tableroId, JugadorId jugadorId, Carta carta) {
         appendChange(new CartaQuitadaDelTablero(tableroId, jugadorId, carta)).apply();
+        appendChange(new CartaAsignadaAJugador(jugadorId, carta)).apply();
     }
 
-    /**
-     * Ronda ronda.
-     *
-     * @return the ronda
-     */
     public Ronda ronda() {
         return ronda;
     }
-
-    /**
-     * Tablero tablero.
-     *
-     * @return the tablero
-     */
     public Tablero tablero() {
         return tablero;
     }
 
-    /**
-     * Jugadores map.
-     *
-     * @return the map
-     */
     public Map<JugadorId, Jugador> jugadores() {
         return jugadores;
     }
@@ -136,10 +117,7 @@ public class Juego extends AggregateEvent<JuegoId> {
 
     /**
      * Asignar cartas a ganador.
-     *
-     * @param ganadorId     the ganador id
-     * @param puntos        the puntos
-     * @param cartasApuesta the cartas apuesta
+
      */
     public void asignarCartasAGanador(JugadorId ganadorId, Integer puntos, Set<Carta> cartasApuesta) {
         appendChange(new CartasAsignadasAJugador(ganadorId, puntos, cartasApuesta)).apply();

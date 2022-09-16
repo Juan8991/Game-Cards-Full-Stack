@@ -2,6 +2,7 @@ package org.example.cardgame.application.handle.materialize;
 
 import org.bson.Document;
 import org.example.cardgame.application.handle.model.MazoViewModel;
+import org.example.cardgame.domain.events.CartaAsignadaAJugador;
 import org.example.cardgame.domain.events.CartaQuitadaDelMazo;
 import org.example.cardgame.domain.events.CartasAsignadasAJugador;
 import org.example.cardgame.domain.events.JugadorAgregado;
@@ -103,6 +104,11 @@ public class MazoMaterializeHandle {
             data.set("fecha", Instant.now());
             template.updateFirst(query, data, COLLECTION_VIEW).block();
         });
+    }
+    @EventListener
+    public void handleCartaAsignadaAJugador(CartaAsignadaAJugador event){
+
+
     }
 
     private Query filterByUidAndId(String uid, String juegoId) {

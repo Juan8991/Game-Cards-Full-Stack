@@ -6,11 +6,20 @@ import org.example.cardgame.domain.values.Ronda;
 public class RondaCreada extends DomainEvent {
     private final Ronda ronda;
     private final Integer tiempo;
+    private final String idJugadorElegido;
 
-    public RondaCreada(Ronda ronda, Integer tiempo) {
+
+
+    public RondaCreada(Ronda ronda, Integer tiempo,String idJugadorElegido) {
         super("cardgame.rondacreada");
         this.ronda = ronda;
         this.tiempo = tiempo;
+        this.idJugadorElegido = idJugadorElegido;
+
+    }
+
+    public String getIdJugadorElegido() {
+        return idJugadorElegido;
     }
 
     public Ronda getRonda() {

@@ -28,7 +28,9 @@ export class GameService {
     return this.http.post(`${environment.urlBase}/juego/poner`, { ...body });
   }
 
-
+  quitarCartaEnTablero(body: any){
+    return this.http.post(`${environment.urlBase}/juego/quitar`, { ...body });
+  }
   //Querys
   listarJuegos(idJugadorPrincipal: string | null): Observable<JuegoModel[]> {
     return this.http.get<JuegoModel[]>(`${environment.urlBase}/juego/listar/${idJugadorPrincipal}`);

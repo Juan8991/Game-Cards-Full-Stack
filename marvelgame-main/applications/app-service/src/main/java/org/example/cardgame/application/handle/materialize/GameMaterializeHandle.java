@@ -101,7 +101,7 @@ public class GameMaterializeHandle {
 
         document.put("jugadores", jugadores);
         document.put("numero", ronda.numero());
-
+        data.set("idjugadore",event.getIdJugadorElegido());
         data.set("fecha", Instant.now());
         data.set("tiempo", event.getTiempo());
         data.set("ronda", document);
@@ -150,7 +150,23 @@ public class GameMaterializeHandle {
 
         template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
     }
+    @EventListener
+    public void handleCartaQuitadaDelTablero(CartaQuitadaDelTablero event){
+        var data = new Update();
+        var document = new Document();
+        var carta = event.getCarta().value();
+        var jugadorId = event.getJugadorId().value();
+        document.put("cartaId", carta.cartaId().value());
+        document.put("estaOculta", carta.estaOculta());
+        document.put("poder", carta.poder());
+        document.put("estaHabilitada", carta.estaHabilitada());
+        document.put("jugadorId", jugadorId);
 
+        data.set("fecha", Instant.now());
+        data.push("tablero.cartas."+jugadorId, document);
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+
+    }
 
     private Query getFilterByAggregateId(DomainEvent event) {
         return new Query(

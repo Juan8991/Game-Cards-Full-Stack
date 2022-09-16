@@ -76,7 +76,7 @@ export class TableGameComponent implements OnInit {
             this.btnIniciarHabilitado = true;
             this.modalSwitch=false;
             this.cuantosApostaron=0;
-            this.elElegidoId=event.ronda.jugadores[this.numeroAleatorio].uuid;
+            this.elElegidoId=event.idJugadorElegido;
             console.log("El elegido crear ronda:",this.elElegidoId)
             break;
           };

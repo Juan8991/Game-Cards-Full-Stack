@@ -10,6 +10,7 @@ public class Ronda implements ValueObject<Ronda.Props> {
     private final Boolean estaIniciada;
 
 
+
     public Ronda(Integer numero, Set<JugadorId> jugadores) {
         this.jugadores = jugadores;
         this.numero = numero;
@@ -30,7 +31,7 @@ public class Ronda implements ValueObject<Ronda.Props> {
 
 
     public Ronda iniciarRonda() {
-        return new Ronda(this.numero, this.jugadores, true);
+        return new Ronda(this.numero, this.jugadores, false);
     }
 
     public Ronda terminarRonda() {
@@ -58,6 +59,7 @@ public class Ronda implements ValueObject<Ronda.Props> {
             public Boolean estaIniciada() {
                 return estaIniciada;
             }
+
         };
     }
 
@@ -68,5 +70,6 @@ public class Ronda implements ValueObject<Ronda.Props> {
         Integer numero();
 
         Boolean estaIniciada();
+
     }
 }

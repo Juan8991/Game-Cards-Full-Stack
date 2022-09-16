@@ -33,6 +33,7 @@ public class JuegoEventChange extends EventChange {
             }
             juego.ronda = event.getRonda();
             juego.tablero.ajustarTiempo(event.getTiempo());
+
         });
 
         apply((TableroCreado event) -> {
@@ -55,6 +56,10 @@ public class JuegoEventChange extends EventChange {
 
         apply((CartaQuitadaDelMazo event) -> {
             juego.jugadores.get(event.getJugadorId()).quitarCartaDeMazo(event.getCarta());
+        });
+        apply((CartaAsignadaAJugador event) -> {
+            var jugador = juego.jugadores().get(event.getJugadorId());
+            jugador.agregarCartaAMazo(event.getCartasApuesta());
         });
 
         apply((RondaIniciada event) -> {
