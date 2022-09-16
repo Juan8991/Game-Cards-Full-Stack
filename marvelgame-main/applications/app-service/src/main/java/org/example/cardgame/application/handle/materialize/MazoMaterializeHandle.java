@@ -108,7 +108,24 @@ public class MazoMaterializeHandle {
     @EventListener
     public void handleCartaAsignadaAJugador(CartaAsignadaAJugador event){
 
+        var query = filterByUidAndId(event.getJugadorId().value(), event.aggregateRootId());
+        var data = new Update();
 
+        var mazo = event.getCartasApuesta();
+        var c = new MazoViewModel.Carta();
+            c.setCartaId(mazo.value().cartaId().value());
+            c.setEstaHabilitada(mazo.value().estaHabilitada());
+            c.setEstaOculta(mazo.value().estaOculta());
+            c.setPoder(mazo.value().poder());
+            c.setUrl(mazo.value().url());
+        var mazoViewModel = template.findOne(query, MazoViewModel.class, COLLECTION_VIEW).block();
+        Optional.ofNullable(mazoViewModel).ifPresent((model) -> {
+            var cartaSet =  model.getCartas();
+            cartaSet.add(c);
+            data.set("cartas", cartaSet);
+            data.set("fecha", Instant.now());
+            template.updateFirst(query, data, COLLECTION_VIEW).block();
+        });
     }
 
     private Query filterByUidAndId(String uid, String juegoId) {

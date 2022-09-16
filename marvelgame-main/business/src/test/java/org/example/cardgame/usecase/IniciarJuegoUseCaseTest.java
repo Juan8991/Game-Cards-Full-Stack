@@ -3,6 +3,7 @@ package org.example.cardgame.usecase;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.cardgame.domain.command.IniciarJuegoCommand;
 import org.example.cardgame.domain.events.JuegoCreado;
+import org.example.cardgame.domain.events.RondaCreada;
 import org.example.cardgame.domain.events.TableroCreado;
 import org.example.cardgame.domain.values.JugadorId;
 import org.example.cardgame.gateway.JuegoDomainEventRepository;
@@ -37,6 +38,9 @@ class IniciarJuegoUseCaseTest {
                 .expectNextMatches(domainEvent -> {
                     var event = (TableroCreado) domainEvent;
                     return event.aggregateRootId().equals("XXXX");
+                }).expectNextMatches(domainEvent -> {
+                    var event2 = (RondaCreada) domainEvent;
+                    return event2.aggregateRootId().equals("XXXX");
                 })
                 .expectComplete()
                 .verify();

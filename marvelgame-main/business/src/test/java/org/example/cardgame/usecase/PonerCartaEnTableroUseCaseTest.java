@@ -76,7 +76,7 @@ public class PonerCartaEnTableroUseCaseTest {
                 new JuegoCreado(jugadorId),
                 new JugadorAgregado(jugadorId, "raul", new Mazo(cartas)),
                 new TableroCreado(new TableroId(), Set.of(jugadorId, jugador2Id)),
-                new RondaCreada(ronda, 30),
+                new RondaCreada(ronda, 30,"sdsdfs"),
                 new RondaIniciada()
         );
     }

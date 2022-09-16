@@ -51,7 +51,7 @@ export class TableGameComponent implements OnInit {
   //ngInit
   ngOnInit(): void {
 
-    //this.modalService.modal$.subscribe(value=>this.modalSwitch=value);
+    this.modalService.modal$.subscribe(value=>this.modalSwitch=value);
     this.route.params.subscribe((params) => {
       this.juegoId = params['id'];
       this.currentUserId=this.auth.obtenerUsuarioSesion().uid;
@@ -62,7 +62,7 @@ export class TableGameComponent implements OnInit {
     //Socket conexion
     this.webSocket.connection(this.juegoId).subscribe({
       next: (event: any) => {
-        console.log("EVENTOTYPE",event.type)
+        //console.log("EVENTOTYPE",event.type)
         //console.log("EVENTOPAAAAA",event)
         switch(event.type){
           case this.RONDA_CREADA:{
