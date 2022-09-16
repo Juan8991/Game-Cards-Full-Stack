@@ -1,0 +1,45 @@
+<div class="hijo">
+  <div class="wrapper2">
+    <!-- Cartas del Tablero -->
+    <div class="contenedor-tablero">
+      <h4>Tablero de apuestas</h4>
+      <div class="bet-table">
+        <div class="card" *ngFor="let card of cartasTableroHijo">
+          <img
+            class="img-mazo"
+            alt="carta"
+             src="../assets/img/detrasCarta.png"
+            />
+          <div class="card-info">
+            <p class="text-title ">Id: {{card.cartaId}}</p>
+            <button class="btn btn-primary" (click)="selecionarCartaDelTablero(card.cartaId)" >SelecionarDelTablero</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+   <!--Cartas del mazo -->
+   <div class="contenedor-cartas">
+    <h4>Mazo jugador</h4>
+    <div class="gamer-cards">
+
+      <div class="card" *ngFor="let card of cartasMazoHijo">
+        <img
+          class="img-mazo"
+          alt="carta"
+          src="{{card.url}}"
+          />
+        <div class="card-info">
+          <p class="text-title ">Poder: {{card.poder}}</p>
+          <button class="btn btn-primary" (click)="selecionarCartaDelMazo(card.cartaId)">SelecionarDelmazo</button>
+        </div>
+      </div>
+    </div>
+   </div>
+
+</div>
+
+
+
+

@@ -8,12 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GameService } from './game.service';
 import { GameListComponent } from './game-list/game-list.component';
+import { GameModalComponent } from './game-modal/game-modal.component';
 
 
 
 
 @NgModule({
-  declarations: [CreateNewgameComponent,GameHomeComponent,TableGameComponent,GameListComponent],
+  declarations: [CreateNewgameComponent,GameHomeComponent,TableGameComponent,GameListComponent,GameModalComponent],
   imports: [
     CommonModule,
     GameRoutingModule,

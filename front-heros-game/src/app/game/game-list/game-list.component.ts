@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JuegoModel } from 'src/app/models/game.model';
 import { GameService } from '../game.service';
 import firebase from 'firebase/compat';
 import { AuthService } from 'src/app/auth/auth.service';
 import { WebSocketService } from 'src/app/webSocket/web-socket.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-game-list',
@@ -21,6 +22,9 @@ export class GameListComponent implements OnInit {
     private gameService: GameService,
     private authService:AuthService,
     private webSocket: WebSocketService) { }
+  /* ngOnDestroy(): void {
+    this.webSocket.closedConnection();
+  } */
 
   async ngOnInit() {
     this.currentUser = await this.authService.getUserAuth();
@@ -34,7 +38,7 @@ export class GameListComponent implements OnInit {
   IniciarJuego(id: string){
     this.webSocket.connection(id).subscribe({
        next: (event:any) => {
-        console.log("EventTYPE",event.type)
+        console.log("EventTYPE",event)
           if(event.type === 'cardgame.tablerocreado'){
             const command={
               juegoId: id,
@@ -43,7 +47,7 @@ export class GameListComponent implements OnInit {
             console.log("comando",command)
             this.gameService.crearRonda(command);
           }
-          console.log("EventTYPE2",event.type)
+          console.log("EventTYPE2",event)
           if(event.type == 'cardgame.rondacreada'){
             console.log("Entro a iniciar redirect")
             this.router.navigate(['/game/board',id]);

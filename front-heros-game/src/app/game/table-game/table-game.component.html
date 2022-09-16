@@ -1,42 +1,49 @@
-
-<div class="wrapper">
-  <div class="header-board"><span>Ronda: {{indexRonda}}</span><br>
-    <span>Jugadores: {{jugadoresRonda}}</span><br>
-    <span>Ganador Partida: {{ganadorPartidaAlias}}</span><br>
-    <!-- <span *ngIf="hasGanado">Ganaste!</span><br> -->
-    <h3>Tiempo: {{tiempo}}</h3>
-    <button (click)="iniciarRonda()" class="btn btn-primary" [disabled]="!btnIniciarHabilitado">Iniciar Ronda</button>
-  </div>
-  <!-- Cartas del Tablero -->
-  <div class="bet-table">
-    <h4>Tablero de apuestas</h4>
-    <div class="card" *ngFor="let card of cartasDelTablero">
-      <img
-        class="img-mazo"
-        alt="carta"
-         src="../assets/img/detrasCarta.png"
-        />
-      <div class="card-info">
-        <p class="text-title ">Id: {{card.cartaId}}</p>
+<app-game-modal *ngIf="modalSwitch" class="hijo" [cartasMazoHijo]="cartasDelJugador" [cartasTableroHijo]="cartasDelTablero"></app-game-modal>
+<div class=padre>
+  <div class="wrapper">
+    <div class="header-board"><span>Ronda: {{indexRonda}}</span><br>
+      <span>Jugadores: {{jugadoresRonda}}</span><br>
+      <!-- <span>Ganador Partida: {{ganadorPartidaAlias}}</span><br> -->
+      <!-- <span *ngIf="hasGanado">Ganaste!</span><br> -->
+      <h3>Tiempo: {{tiempo}}</h3>
+      <button (click)="iniciarRonda()" class="btn btn-primary" [disabled]="!btnIniciarHabilitado">Iniciar Ronda</button>
+    </div>
+    <!-- Cartas del Tablero -->
+    <div class="bet-table">
+      <h4>Tablero de apuestas</h4>
+      <div class="card" *ngFor="let card of cartasDelTablero">
+        <img
+          class="img-mazo"
+          alt="carta"
+           src="../assets/img/detrasCarta.png"
+          />
+        <div class="card-info">
+          <p class="text-title ">Id: {{card.cartaId}}</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Cartas del mazo -->
-  <div class="gamer-cards">
-    <h4>Mazo jugador</h4>
-    <div class="card" *ngFor="let card of cartasDelJugador">
-      <img
-        class="img-mazo"
-        alt="carta"
-        src="{{card.url}}"
-        />
-      <div class="card-info">
-        <p class="text-title ">Poder: {{card.poder}}</p>
-        <button class="btn btn-primary" (click)="ponerCarta(card.cartaId)" [disabled]="btnIniciarHabilitado">Poner</button>
+    <!-- Cartas del mazo -->
+    <div class="gamer-cards">
+      <h4>Mazo jugador</h4>
+      <div class="card" *ngFor="let card of cartasDelJugador">
+        <img
+          class="img-mazo"
+          alt="carta"
+          src="{{card.url}}"
+          />
+        <div class="card-info">
+          <p class="text-title ">Poder: {{card.poder}}</p>
+          <button class="btn btn-primary" (click)="ponerCarta(card.cartaId)" [disabled]="btnIniciarHabilitado">Poner</button>
+        </div>
       </div>
-    </div>
+
+  </div>
 </div>
+</div>
+
+
+
 
 
 
